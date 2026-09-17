@@ -1,0 +1,33 @@
+# ---- 依赖与构建产物 ----
+node_modules/
+dist/
+*.log
+*.tsbuildinfo
+*.tmp
+
+# ---- 运行时数据（群/消息/设置/沙箱/编排事件/定时任务/上传附件）----
+data/
+
+# ---- dsh runtime 与会话 ----
+.dsh/
+.dsh-*
+**/.dsh/
+
+# ---- 环境变量与密钥 ----
+.env
+.env.*
+!.env.example
+
+# ---- IDE / 编辑器 ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.workbuddy/
+
+# ---- 系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+

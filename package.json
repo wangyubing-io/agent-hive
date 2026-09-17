@@ -1,0 +1,42 @@
+{
+  "name": "agent-hive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "微信群聊式 AI 研发团队工作台 - Node/TS 全栈",
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env --import tsx/esm apps/server/src/index.ts",
+    "dev:watch": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env --import tsx/esm --watch apps/server/src/index.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "test:quick": "tsc -p tsconfig.json --noEmit && node scripts/md-test.mjs && node scripts/_ui-static-check.mjs && node scripts/_search-check.mjs && node scripts/_search-all-check.mjs && npm run test:web && npm run test:agents",
+    "test:web": "node --disable-warning=ExperimentalWarning --import tsx/esm scripts/_web-tools-check.ts",
+    "test:agents": "node --disable-warning=ExperimentalWarning --import tsx/esm scripts/_agent-features-check.ts",
+    "test:e2e:retrieval": "node --disable-warning=ExperimentalWarning --import tsx/esm scripts/_retrieval-e2e.ts",
+    "test:e2e:agent-features": "node --disable-warning=ExperimentalWarning scripts/_agent-features-e2e.mjs",
+    "test:e2e:deps": "node scripts/_deps-e2e.cjs",
+    "test:e2e:orch": "node scripts/_orchestration-e2e.cjs",
+    "test:e2e:agent": "node scripts/_agent-edit-e2e.cjs",
+    "test:e2e:web": "node scripts/_web-settings-e2e.mjs",
+    "test:e2e": "npm run test:e2e:agent && npm run test:e2e:retrieval && npm run test:e2e:deps && npm run test:e2e:orch && npm run test:e2e:web && npm run test:e2e:agent-features",
+    "start": "node dist/apps/server/src/index.js",
+    "test:e2e:live": "node scripts/_live-chat-check.mjs"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "^1.5.9",
+    "@langchain/core": "^1.2.9",
+    "@langchain/langgraph": "^1.4.14",
+    "@langchain/langgraph-checkpoint": "^1.1.5",
+    "@langchain/openai": "^1.5.11",
+    "iconv-lite": "^0.7.3",
+    "mysql2": "^3.24.3",
+    "socket.io": "^4.8.1",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "socket.io-client": "^4.8.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

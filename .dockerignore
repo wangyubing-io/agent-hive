@@ -1,0 +1,10 @@
+# 构建上下文排除项（保持镜像小、构建快）
+node_modules
+dist
+data
+.git
+.gitignore
+.workbuddy
+*.log
+.DS_Store
+npm-debug.log*
